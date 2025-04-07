@@ -1,8 +1,10 @@
 com\ordenes\controller\OrderController.class
+com\ordenes\model\OrderStatus.class
 com\ordenes\OrdenesServiceApplication.class
 com\ordenes\repository\OrderRepository.class
 com\ordenes\service\EmailService.class
 com\ordenes\model\Order.class
 com\ordenes\repository\PaymentRepository.class
+com\ordenes\service\OrderService$1.class
 com\ordenes\service\OrderService.class
 com\ordenes\model\Payment.class

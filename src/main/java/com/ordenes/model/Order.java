@@ -3,10 +3,13 @@ package com.ordenes.model;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.Table; 
 
 @Entity
 @Table(name = "orders", schema = "ordenes")
@@ -20,11 +23,16 @@ public class Order {
 
     private LocalDateTime orderDate = LocalDateTime.now();
 
-    private String status;
+    @Enumerated(EnumType.STRING)
+    private OrderStatus status = OrderStatus.PENDIENTE;
 
     private double total;
 
     private String shippingAddress;
+
+    @Column(name = "customer_email")
+    private String customerEmail;
+
 
     // Getters y setters
 
@@ -52,11 +60,11 @@ public class Order {
         this.orderDate = orderDate;
     }
 
-    public String getStatus() {
+    public OrderStatus getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(OrderStatus status) {
         this.status = status;
     }
 
@@ -75,4 +83,13 @@ public class Order {
     public void setShippingAddress(String shippingAddress) {
         this.shippingAddress = shippingAddress;
     }
+
+    public String getCustomerEmail() {
+        return customerEmail;
+    }
+
+    public void setCustomerEmail(String customerEmail) {
+        this.customerEmail = customerEmail;
+    }
+
 }
