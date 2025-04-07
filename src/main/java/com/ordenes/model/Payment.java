@@ -6,6 +6,8 @@ import java.util.UUID;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -16,17 +18,20 @@ public class Payment {
     @GeneratedValue
     private UUID paymentId;
 
-    private UUID orderId;
+    @ManyToOne
+    @JoinColumn(name = "order_id", nullable = false)
+    private Order order;
 
     private double amount;
 
-    private String status; // "exitoso", "fallido", etc.
+    private String status;
 
-    private String method = "tarjeta"; // Simulado
+    private String method = "tarjeta";
 
     private LocalDateTime paymentDate = LocalDateTime.now();
 
     // Getters y setters
+
     public UUID getPaymentId() {
         return paymentId;
     }
@@ -35,12 +40,12 @@ public class Payment {
         this.paymentId = paymentId;
     }
 
-    public UUID getOrderId() {
-        return orderId;
+    public Order getOrder() {
+        return order;
     }
 
-    public void setOrderId(UUID orderId) {
-        this.orderId = orderId;
+    public void setOrder(Order order) {
+        this.order = order;
     }
 
     public double getAmount() {
@@ -75,3 +80,4 @@ public class Payment {
         this.paymentDate = paymentDate;
     }
 }
+
