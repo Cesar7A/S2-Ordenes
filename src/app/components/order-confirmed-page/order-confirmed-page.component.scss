@@ -1,0 +1,77 @@
+/* order-confirmed-page.component.scss */
+.order-confirmation-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  .confirmation-body {
+    padding: 20px;
+    background-color: #f9f9f9;
+    flex-grow: 1;
+  }
+  
+  .order-summary {
+    text-align: center;
+    margin-bottom: 30px;
+  
+    h2 {
+      color: #2c3e50;
+    }
+  
+    p {
+      font-size: 1.1rem;
+      color: #7f8c8d;
+    }
+  }
+  
+  .order-details, .products, .shipping-info, .payment-info {
+    background: white;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+  
+  h3 {
+    font-size: 1.5rem;
+    color: #34495e;
+    margin-bottom: 10px;
+  }
+  
+  .product-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+  
+    .product-image {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      margin-right: 15px;
+    }
+  
+    .product-info p {
+      margin: 5px 0;
+    }
+  }
+  
+  .confirmation-actions {
+    text-align: center;
+  
+    .btn-home, .btn-track-order {
+      padding: 10px 20px;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin: 10px;
+      font-size: 1rem;
+      transition: background-color 0.3s;
+  
+      &:hover {
+        background-color: #2980b9;
+      }
+    }
+  }
