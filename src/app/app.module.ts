@@ -7,6 +7,8 @@ import { AppComponent } from "./app.component";
 import { OrderCreateComponent } from "./components/order-create/order-create.component";
 import { OrderListComponent } from "./components/order-list/order-list.component";
 
+import { OrderModule } from './order/order.module';  // Importar el módulo de órdenes
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -16,7 +18,8 @@ import { OrderListComponent } from "./components/order-list/order-list.component
     imports: [
         BrowserModule,
         ReactiveFormsModule,
-        HttpClientModule
+        HttpClientModule,
+        OrderModule, 
     ],
     providers: [],
     bootstrap: [AppComponent]
