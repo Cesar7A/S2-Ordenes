@@ -21,4 +21,8 @@ export class OrderService {
   crearOrden(data: any): Observable<any> {
     return this.http.post(this.apiUrl, data);
   }
+
+  getOrderDetails(orderId: string): Observable<any> {
+    return this.http.get(`${this.apiUrl}/details/${orderId}`);
+  }
 }
