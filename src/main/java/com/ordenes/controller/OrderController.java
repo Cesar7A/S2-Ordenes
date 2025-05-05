@@ -3,6 +3,11 @@ package com.ordenes.controller;
 import java.util.List;
 import java.util.UUID;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,6 +18,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import jakarta.validation.Valid;
+import org.springframework.validation.BindingResult;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.server.ResponseStatusException;
 
 import com.ordenes.model.Order;
 import com.ordenes.model.OrderStatus;
@@ -34,7 +44,10 @@ public class OrderController {
     }
 
     @PostMapping
-    public Order create(@RequestBody Order order) {
+    public Order create(@Valid @RequestBody Order order, BindingResult result) {
+        if (result.hasErrors()) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, result.getFieldError().getDefaultMessage());
+        }
         return orderService.createOrderWithPayment(order);
     }
 
